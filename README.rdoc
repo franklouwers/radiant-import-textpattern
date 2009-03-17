@@ -10,7 +10,6 @@ Instructions for use:
 * 4) IMPORTANT: make sure all your fieldnames are lowercase only! I know, it sucks, and I should find a way around this
 * 5) rake radiant:extensions:import_textpattern:run    
   
-   
 == Requirements
 
 * Radiant 0.6.7 or greater
@@ -20,6 +19,9 @@ Instructions for use:
 == What does it do?
 
 Copies all of your published Textpattern articles (section "Article") including comments into Radiant
+
+== Please note
+* The import module creates two page parts per article. The body part includes everything, while the intro part includes only the first paragraph. I did it this way because I needed this for one specific migration. Feel free to change/delete. It's in apps/models/textpattern_article.rb.
 
 
 == Limitations
