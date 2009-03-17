@@ -1,0 +1,37 @@
+= Radiant Extension: Import Textpattern 
+
+A rough and ready import script for converting a Textpattern site to Radiant. Based on the Mephisto import extension.
+
+Instructions for use:
+
+* 1) Setup a clean install of Radiant and freeze to the Edge version.
+* 2) Install the comments extension 
+* 3) Update your database.yml to include an entry for 'textpattern:' with details of your Textpattern database. 
+* 4) IMPORTANT: make sure all your fieldnames are lowercase only! I know, it sucks, and I should find a way around this
+* 5) rake radiant:extensions:import_textpattern:run    
+  
+   
+== Requirements
+
+* Radiant 0.6.7 or greater
+* Comments extension (http://github.com/artofmission/radiant-comments)
+
+
+== What does it do?
+
+Copies all of your published Textpattern articles (section "Article") including comments into Radiant
+
+
+== Limitations
+
+Quite a few. It's rough and ready! Feel free to extend and fork to your hearts content. 
+
+* Only articles under Article are copied
+* Doesn't copy over any layout / templates or any other view information
+* Any other advanced features are also not supported.
+* Tags are not supported yet (as there is no real unified to do them in TXP). You could build something based on the keywords
+* the biggest limitation of them all: in a lot of cases the textpattern fieldnames include Uppercases (not all, but a few). ActiveRecord doesn't support this. The quick and dirty way to cope with this, is to change the fieldnames by hand in your mysqldump. If you know a better way, please fork and have fun.
+
+= Contributing   
+
+Feel free to build upon and submit patches / fork on Github.

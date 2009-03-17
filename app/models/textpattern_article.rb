@@ -1,4 +1,5 @@
 class TextpatternArticle < ActiveRecord::Base
+  
   self.abstract_class = true
   establish_connection "textpattern"
   set_table_name :textpattern
@@ -69,13 +70,16 @@ class TextpatternArticle < ActiveRecord::Base
     )
     
     page.parts << PagePart.new(:name => 'body',  :filter_id =>  "Textile", :content => body )
-    page.parts << PagePart.new(:name => 'intro', :filter_id => "Textile", :content => body.grep(/(.*?)\n\s*\n/))
+    page.parts << PagePart.new(:name => 'intro', :filter_id =>  "Textile", :content => body.split(/\r\n\s*\r\n/).first)
     
     page
   end
 
   def self.find_all_published
-    find(:all, :conditions => "status = 4")
+    find(:all, :conditions => "status = 4 and section = \"article\" ")
   end
+
+
+
 
 end
